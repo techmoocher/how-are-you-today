@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Are You Today?</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/love.png" type="image/png">
+</head>
+<body>
+    <!-- Floating hearts (replaced sakura petals) -->
+    <div class="sakura"></div>
+    <div class="sakura"></div>
+    <div class="sakura"></div>
+    <div class="sakura"></div>
+    <div class="sakura"></div>
+    <div class="sakura"></div>
+    
+    <!-- Additional pure CSS hearts -->
+    <div class="heart"></div>
+    <div class="heart"></div>
+    
+    <!-- Sparkle elements -->
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    
+    <div class="container">
+        <div id="feelings-card">
+            <h1>How Are You Today?</h1>
+            <div class="feeling-container">
+                <div class="gif-wrapper">
+                    <img src="images/how-are-you-feeling.gif" alt="How are you feeling?" id="feeling-gif">
+                </div>
+                
+                <!-- New cute slider component -->
+                <div class="cute-slider-container">
+                    <div class="emoji-display" id="current-emoji">🤔</div>
+                    <div class="feeling-description" id="feeling-description">How are you feeling today?</div>
+                    <div class="slider-track">
+                        <div class="slider-segment" data-level="1"></div>
+                        <div class="slider-segment" data-level="2"></div>
+                        <div class="slider-segment" data-level="3"></div>
+                        <div class="slider-segment" data-level="4"></div>
+                        <div class="slider-segment" data-level="5"></div>
+                        <div class="slider-segment" data-level="6"></div>
+                        <div class="slider-segment" data-level="7"></div>
+                        <div class="slider-segment" data-level="8"></div>
+                        <div class="slider-segment" data-level="9"></div>
+                        <div class="slider-segment" data-level="10"></div>
+                    </div>
+                    <input type="range" id="feelings-slider" min="1" max="10" value="1" step="1">
+                </div>
+                
+                <button id="confirm-btn">Confirm</button>
+            </div>
+        </div>
+
+        <div id="response-card">
+            <h2 id="response-title">We're here for you!</h2>
+            <div class="gif-container" id="response-gif"></div>
+            <p id="motivation-text"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

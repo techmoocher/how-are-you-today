@@ -1,0 +1,485 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    color: #e1e1e1;
+    /* Sakura-themed gradient background */
+    background: linear-gradient(135deg, #1e1a2b 0%, #2b193d 50%, #331e4d 100%);
+    background-size: 400% 400%;
+    background-attachment: fixed; /* Keep background fixed while scrolling */
+    animation: gradient 20s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden; /* Allow vertical scrolling but prevent horizontal */
+    overflow-y: auto;
+    padding: 40px 0; /* Add padding to ensure content doesn't touch edges */
+}
+
+/* Animated gradient background */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Replace Cherry blossom petals with hearts */
+.sakura {
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    z-index: -1;
+    animation: fall linear infinite, sway 2s ease-in-out infinite alternate;
+    pointer-events: none;
+    /* Heart shape using clip-path instead of SVG */
+    clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
+}
+
+.sakura:nth-child(1) {
+    width: 24px;
+    height: 24px;
+    left: 10%;
+    animation-duration: 9s, 3s;
+    animation-delay: 0s, 1s;
+    background-color: rgba(255, 183, 221, 0.7);
+}
+
+.sakura:nth-child(2) {
+    width: 32px;
+    height: 32px;
+    left: 30%;
+    animation-duration: 10s, 2.5s;
+    animation-delay: 1s, 0.5s;
+    background-color: rgba(255, 201, 229, 0.6);
+}
+
+.sakura:nth-child(3) {
+    width: 40px;
+    height: 40px;
+    left: 60%;
+    animation-duration: 12s, 3.5s;
+    animation-delay: 2s, 1.5s;
+    background-color: rgba(255, 166, 209, 0.7);
+}
+
+.sakura:nth-child(4) {
+    width: 20px;
+    height: 20px;
+    left: 25%;
+    animation-duration: 8s, 2s;
+    animation-delay: 0.5s, 0s;
+    background-color: rgba(255, 198, 227, 0.6);
+}
+
+.sakura:nth-child(5) {
+    width: 36px;
+    height: 36px;
+    left: 80%;
+    animation-duration: 11s, 3s;
+    animation-delay: 3s, 1s;
+    background-color: rgba(255, 174, 217, 0.7);
+}
+
+.sakura:nth-child(6) {
+    width: 18px;
+    height: 18px;
+    left: 50%;
+    animation-duration: 7s, 2.2s;
+    animation-delay: 1.5s, 0.7s;
+    background-color: rgba(255, 212, 237, 0.6);
+}
+
+/* Remove heart CSS class */
+.heart {
+    display: none;
+}
+
+.heart:before,
+.heart:after {
+    display: none;
+}
+
+@keyframes float-heart {
+    0% {
+        top: -10%;
+        opacity: 0.7;
+    }
+    100% {
+        top: 100%;
+        opacity: 0.3;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: rotate(-45deg) scale(1);
+    }
+    50% {
+        transform: rotate(-45deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(-45deg) scale(1);
+    }
+}
+
+@keyframes fall {
+    0% {
+        top: -10%;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes sway {
+    0% {
+        margin-left: 0px;
+    }
+    100% {
+        margin-left: 20px;
+    }
+}
+
+/* Sparkle effect for romantic feel */
+.sparkle {
+    position: absolute;
+    pointer-events: none;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 8px 2px rgba(255, 182, 193, 0.8);
+    opacity: 0;
+    animation: sparkle 2s ease-in-out infinite;
+    z-index: -1;
+}
+
+.sparkle:nth-child(7) { top: 20%; left: 15%; animation-delay: 0s; }
+.sparkle:nth-child(8) { top: 70%; left: 35%; animation-delay: 0.3s; }
+.sparkle:nth-child(9) { top: 40%; left: 75%; animation-delay: 0.6s; }
+.sparkle:nth-child(10) { top: 85%; left: 25%; animation-delay: 0.9s; }
+.sparkle:nth-child(11) { top: 10%; left: 85%; animation-delay: 1.2s; }
+.sparkle:nth-child(12) { top: 55%; left: 10%; animation-delay: 1.5s; }
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+/* Card with softer pink glow for sakura theme */
+#feelings-card, #response-card {
+    background-color: rgba(45, 40, 60, 0.8);
+    border-radius: 25px;
+    padding: 35px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 166, 202, 0.3);
+    text-align: center;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 182, 193, 0.15);
+    transition: all 0.3s ease;
+    width: 450px; /* Fixed width to ensure descriptions fit on one line */
+    max-width: 90vw; /* Ensure it doesn't overflow on very small screens */
+}
+
+#feelings-card:hover, #response-card:hover {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 166, 202, 0.25);
+    transform: translateY(-5px);
+}
+
+/* Title color to match sakura theme */
+h1, #response-title {
+    color: #ffa6ca;
+    margin-bottom: 30px;
+    font-size: 28px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: inline-block;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 10%;
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffa6ca, transparent);
+    border-radius: 3px;
+}
+
+h2 {
+    color: #ff85a2; /* Keep pink headers for accent */
+    margin-bottom: 20px;
+}
+
+/* Response card title - make it a cute pink */
+#response-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    font-weight: 700; /* Make it a bit bolder */
+}
+
+/* Replace slider container with feeling container */
+.feeling-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* New cute slider styles */
+.cute-slider-container {
+    width: 90%;
+    max-width: 350px;
+    margin: 20px auto;
+    position: relative;
+    padding: 10px 0 30px;
+}
+
+.emoji-display {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 5px;
+    height: 50px;
+    transition: all 0.3s ease;
+}
+
+/* Add feeling description area - moved between emoji and slider */
+.feeling-description {
+    margin: 0 auto 15px;
+    font-size: 18px;
+    color: #e1e1e1;
+    min-height: 30px;
+    text-align: center;
+    font-weight: 500;
+    background-color: rgba(60, 60, 60, 0.4);
+    padding: 8px 15px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    transition: all 0.3s ease;
+}
+
+.slider-track {
+    position: relative;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px; /* Keep track rounded */
+    display: flex;
+    margin: 0 auto;
+    overflow: hidden; /* Change to hidden to ensure segments don't overflow */
+    border: 1px solid rgba(255, 166, 202, 0.3);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 0;
+    margin-top: 15px;
+}
+
+.slider-segment {
+    flex: 1;
+    height: 100%;
+    background: transparent;
+    transition: background-color 0.3s ease;
+    position: relative;
+    z-index: 1;
+    border-radius: 0; /* Remove segment border-radius for complete fill */
+    cursor: pointer; /* Change cursor to pointer on hover to indicate clickable */
+}
+
+/* Add special styling for first and last segments */
+.slider-segment:first-child {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    z-index: 2; /* Higher than other segments but lower than slider */
+}
+
+.slider-segment:last-child {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.slider-segment:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.slider-segment.active {
+    background-color: rgba(255, 166, 202, 0.8);
+    box-shadow: none; /* Remove shadow to prevent oval appearance */
+}
+
+/* Hide default range input and customize */
+#feelings-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 20px;
+    background: transparent;
+    outline: none;
+    margin: 0;
+    position: absolute;
+    top: 0; /* Position directly over the track */
+    left: 0;
+    z-index: 3; /* Higher z-index to ensure it captures clicks */
+    cursor: pointer;
+    opacity: 0; /* Hide the default slider but keep it functional */
+}
+
+/* Add styles for the feeling GIF */
+.gif-wrapper {
+    width: 200px;
+    height: 200px;
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px; /* More rounded corners */
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 166, 202, 0.4);
+    background-color: rgba(45, 40, 60, 0.6);
+    border: 2px solid rgba(255, 182, 193, 0.3);
+    aspect-ratio: 1; /* Ensure square */
+}
+
+#feeling-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gif-container {
+    margin: 20px auto;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(30, 30, 30, 0.6);
+    border-radius: 20px; /* More rounded corners */
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    aspect-ratio: 1; /* Ensure square */
+    overflow: hidden;
+}
+
+.gif-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Changed from 'cover' to 'contain' to show full image */
+}
+
+/* Style specifically for empathy GIF */
+.empathy-gif-container img {
+    transform: scale(0.9); /* Zoom out slightly to ensure full visibility */
+    object-fit: contain;
+}
+
+button {
+    background: linear-gradient(45deg, #ffa6ca, #ff85a2);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 20px; /* Added more spacing since description moved */
+    font-family: 'Quicksand', sans-serif;
+    box-shadow: 0 4px 15px rgba(255, 166, 202, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #ff85a2, #ffa6ca);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 166, 202, 0.4);
+}
+
+button:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+button::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #ffffff;
+    border-radius: 30px;
+    z-index: -1;
+    transition: all 0.4s ease;
+    transform: scale(0);
+    opacity: 0.6;
+}
+
+button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(255, 166, 202, 0.3);
+}
+
+/* Disabled button style */
+button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+    box-shadow: none;
+}
+
+button:disabled:hover {
+    background-color: #666;
+    transform: none;
+    box-shadow: none;
+}
+
+#response-card {
+    display: none;
+    cursor: default; /* Change from pointer to default since it's not clickable */
+}
+
+/* Remove the "Click anywhere to go back" message */
+#response-card::after {
+    content: ""; /* Remove content */
+    display: none; /* Hide completely */
+}
+
+#motivation-text {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    color: #d1d1d1;
+    font-weight: 500;
+    background-color: rgba(30, 30, 30, 0.6);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* Remove back button styles as we're not using it anymore */
+#back-btn {
+    display: none;
+}
